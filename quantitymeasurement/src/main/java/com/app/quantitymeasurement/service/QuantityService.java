@@ -1,6 +1,7 @@
 package com.app.quantitymeasurement.service;
 
 import com.app.quantitymeasurement.model.dto.QuantityDTO;
+import com.app.quantitymeasurement.model.dto.QuantityMeasurementDTO;
 import com.app.quantitymeasurement.model.entity.QuantityMeasurementEntity;
 import com.app.quantitymeasurement.repository.QuantityMeasurementRepository;
 import org.springframework.stereotype.Service;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class QuantityService {
+public class QuantityService implements IQuantityMeasurementService {
 
     private final QuantityMeasurementRepository repository;
 
@@ -16,8 +17,80 @@ public class QuantityService {
         this.repository = repository;
     }
 
-    public QuantityMeasurementEntity calculate(QuantityDTO dto) {
+    @Override
+    public QuantityMeasurementDTO add(QuantityDTO dto) {
+        return performOperation(dto, dto.getValue1() + dto.getValue2());
+    }
 
+    @Override
+    public QuantityMeasurementDTO subtract(QuantityDTO dto) {
+        return performOperation(dto, dto.getValue1() - dto.getValue2());
+    }
+
+    @Override
+    public QuantityMeasurementDTO multiply(QuantityDTO dto) {
+        return performOperation(dto, dto.getValue1() * dto.getValue2());
+    }
+
+    @Override
+    public QuantityMeasurementDTO divide(QuantityDTO dto) {
+        if (dto.getValue2() == 0) {
+            return errorResponse(dto, "Cannot divide by zero");
+        }
+        return performOperation(dto, dto.getValue1() / dto.getValue2());
+    }
+
+    @Override
+    public QuantityMeasurementDTO compare(QuantityDTO dto) {
+
+        double v1 = dto.getValue1();
+        double v2 = dto.getValue2();
+
+        String message;
+
+        if (v1 > v2) {
+            message = v1 + " " + dto.getUnit1() + " is greater than " + v2 + " " + dto.getUnit2();
+        } else if (v1 < v2) {
+            message = v1 + " " + dto.getUnit1() + " is less than " + v2 + " " + dto.getUnit2();
+        } else {
+            message = "Both are equal";
+        }
+
+        QuantityMeasurementEntity entity = buildEntity(dto);
+        entity.setResult(0.0);
+        entity.setError(false);
+        entity.setErrorMessage(message);
+
+        return QuantityMeasurementDTO.fromEntity(repository.save(entity));
+    }
+
+    @Override
+    public QuantityMeasurementDTO convert(QuantityDTO dto) {
+        double result = dto.getValue1() * 100; // simple logic
+        return performOperation(dto, result);
+    }
+
+    // ================= COMMON METHODS =================
+
+    private QuantityMeasurementDTO performOperation(QuantityDTO dto, double result) {
+        QuantityMeasurementEntity entity = buildEntity(dto);
+
+        entity.setResult(result);
+        entity.setError(false);
+
+        return QuantityMeasurementDTO.fromEntity(repository.save(entity));
+    }
+
+    private QuantityMeasurementDTO errorResponse(QuantityDTO dto, String message) {
+        QuantityMeasurementEntity entity = buildEntity(dto);
+
+        entity.setError(true);
+        entity.setErrorMessage(message);
+
+        return QuantityMeasurementDTO.fromEntity(repository.save(entity));
+    }
+
+    private QuantityMeasurementEntity buildEntity(QuantityDTO dto) {
         QuantityMeasurementEntity entity = new QuantityMeasurementEntity();
 
         entity.setOperation(dto.getOperation());
@@ -27,132 +100,28 @@ public class QuantityService {
         entity.setUnit1(dto.getUnit1());
         entity.setUnit2(dto.getUnit2());
 
-        try {
-            double v1 = convertToBase(dto.getValue1(), dto.getUnit1(), dto.getMeasurementType());
-            double v2 = convertToBase(dto.getValue2(), dto.getUnit2(), dto.getMeasurementType());
-
-            double result = 0;
-
-            switch (dto.getOperation().toUpperCase()) {
-
-                case "ADD":
-                    result = v1 + v2;
-                    entity.setResult(result);
-                    entity.setErrorMessage("Addition result: " + result);
-                    break;
-
-                case "SUBTRACT":
-                    result = v1 - v2;
-                    entity.setResult(result);
-                    entity.setErrorMessage("Subtraction result: " + result);
-                    break;
-                case "MULTIPLY":
-                    result = v1 * v2;
-                    entity.setResult(result);
-                    entity.setErrorMessage("Multiplication result: " + result);
-                    break;
-
-                case "DIVIDE":
-
-                    if (v2 == 0) {
-                        throw new RuntimeException("Cannot divide by zero");
-                    }
-
-                    result = v1 / v2;
-                    entity.setResult(result);
-                    entity.setErrorMessage("Division result: " + result);
-                    break;
-
-                case "COMPARE":
-
-                    if (v1 > v2) {
-                        entity.setResult(1.0);
-                        entity.setErrorMessage(dto.getValue1() + " " + dto.getUnit1()
-                                + " is greater than " + dto.getValue2() + " " + dto.getUnit2());
-                    } else if (v1 < v2) {
-                        entity.setResult(-1.0);
-                        entity.setErrorMessage(dto.getValue1() + " " + dto.getUnit1()
-                                + " is less than " + dto.getValue2() + " " + dto.getUnit2());
-                    } else {
-                        entity.setResult(0.0);
-                        entity.setErrorMessage("Both quantities are equal");
-                    }
-                    break;
-
-                case "CONVERT":
-                    entity.setResult(v1);
-                    entity.setErrorMessage("Converted value in base unit: " + v1);
-                    break;
-
-                default:
-                    throw new RuntimeException("Invalid operation");
-            }
-
-            entity.setError(false);
-
-        } catch (Exception e) {
-            entity.setError(true);
-            entity.setErrorMessage(e.getMessage());
-        }
-
-        return repository.save(entity);
+        return entity;
     }
 
-    public List<QuantityMeasurementEntity> getAll() {
-        return repository.findAll();
+    //HISTORY 
+
+    @Override
+    public List<QuantityMeasurementDTO> getOperationHistory(String operation) {
+        return QuantityMeasurementDTO.fromEntityList(repository.findByOperation(operation));
     }
 
-    //MAIN CONVERSION METHOD
-    private double convertToBase(double value, String unit, String type) {
+    @Override
+    public List<QuantityMeasurementDTO> getMeasurementsByType(String type) {
+        return QuantityMeasurementDTO.fromEntityList(repository.findByMeasurementType(type));
+    }
 
-        switch (type.toLowerCase()) {
+    @Override
+    public long getOperationCount(String operation) {
+        return repository.countByOperation(operation);
+    }
 
-            //LENGTH (base = meter)
-            case "length":
-                switch (unit.toLowerCase()) {
-                    case "km":
-                    case "kilometer":
-                        return value * 1000;
-                    case "meter":
-                    case "m":
-                        return value;
-                    case "cm":
-                        return value / 100;
-                }
-
-            // WEIGHT (base = gram)
-            case "weight":
-                switch (unit.toLowerCase()) {
-                    case "kg":
-                        return value * 1000;
-                    case "gram":
-                    case "g":
-                        return value;
-                }
-
-            //VOLUME (base = liter)
-            case "volume":
-                switch (unit.toLowerCase()) {
-                    case "liter":
-                    case "l":
-                        return value;
-                    case "ml":
-                        return value / 1000;
-                }
-
-            //TEMPERATURE (base = Celsius)
-            case "temperature":
-                switch (unit.toLowerCase()) {
-                    case "c":
-                        return value;
-                    case "f":
-                        return (value - 32) * 5 / 9;
-                    case "k":
-                        return value - 273.15;
-                }
-
-            default:
-                throw new RuntimeException("Invalid measurement type or unit");
-        }
+    @Override
+    public List<QuantityMeasurementDTO> getErrorHistory() {
+        return QuantityMeasurementDTO.fromEntityList(repository.findByIsErrorTrue());
     }
 }

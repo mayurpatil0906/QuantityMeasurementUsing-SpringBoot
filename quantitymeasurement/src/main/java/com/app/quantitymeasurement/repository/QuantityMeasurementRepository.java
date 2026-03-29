@@ -7,10 +7,13 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface QuantityMeasurementRepository
-        extends JpaRepository<QuantityMeasurementEntity, Long> {
+public interface QuantityMeasurementRepository extends JpaRepository<QuantityMeasurementEntity, Long> {
 
     List<QuantityMeasurementEntity> findByOperation(String operation);
 
     List<QuantityMeasurementEntity> findByMeasurementType(String type);
+
+    long countByOperation(String operation);
+
+    List<QuantityMeasurementEntity> findByIsErrorTrue();
 }
