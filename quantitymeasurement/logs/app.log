@@ -1,0 +1,81 @@
+2026-03-30 11:48:26 - INFO - com.app.quantitymeasurement.QuantityMeasurementAppApplication - Starting QuantityMeasurementAppApplication using Java 21.0.9 with PID 32236 (C:\Users\mpat3325\OneDrive - 7-Eleven, Inc\Desktop\GITHUB\quantitymeasurement\QuantityMeasurementUsing-SpringBoot\quantitymeasurement\target\classes started by mpat3325 in C:\Users\mpat3325\OneDrive - 7-Eleven, Inc\Desktop\GITHUB\quantitymeasurement\QuantityMeasurementUsing-SpringBoot\quantitymeasurement)
+2026-03-30 11:48:26 - DEBUG - com.app.quantitymeasurement.QuantityMeasurementAppApplication - Running with Spring Boot v4.0.4, Spring v7.0.6
+2026-03-30 11:48:26 - INFO - com.app.quantitymeasurement.QuantityMeasurementAppApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-30 11:48:26 - INFO - org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-03-30 11:48:26 - INFO - org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-03-30 11:48:27 - INFO - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-30 11:48:27 - INFO - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 43 ms. Found 1 JPA repository interface.
+2026-03-30 11:48:28 - INFO - org.springframework.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-30 11:48:28 - INFO - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-30 11:48:28 - INFO - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-30 11:48:28 - INFO - org.springframework.boot.web.context.servlet.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 1825 ms
+2026-03-30 11:48:28 - INFO - org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-30 11:48:29 - INFO - org.hibernate.orm.core - HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-03-30 11:48:29 - INFO - org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-30 11:48:29 - INFO - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-03-30 11:48:29 - INFO - com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection conn0: url=jdbc:h2:file:C:/quantitydb/quantitydb user=SA
+2026-03-30 11:48:29 - INFO - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-03-30 11:48:29 - WARN - org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-30 11:48:29 - INFO - org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:C:/quantitydb/quantitydb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: QUANTITYDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-30 11:48:30 - INFO - org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-30 11:48:30 - INFO - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-30 11:48:30 - INFO - org.springframework.data.jpa.repository.query.QueryEnhancerFactories - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-03-30 11:48:31 - WARN - org.springframework.boot.jpa.autoconfigure.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-30 11:48:31 - INFO - org.springframework.boot.h2console.autoconfigure.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:C:/quantitydb/quantitydb'
+2026-03-30 11:48:31 - INFO - org.springframework.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-30 11:48:31 - INFO - com.app.quantitymeasurement.QuantityMeasurementAppApplication - Started QuantityMeasurementAppApplication in 5.408 seconds (process running for 5.987)
+2026-03-30 11:48:31 - WARN - org.springdoc.core.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-30 11:48:31 - WARN - org.springdoc.core.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-30 11:52:46 - INFO - org.springframework.boot.devtools.autoconfigure.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 16 class path changes (0 additions, 1 deletion, 15 modifications)
+2026-03-30 11:52:46 - INFO - org.springframework.boot.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-03-30 11:52:46 - INFO - org.springframework.boot.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-03-30 11:52:46 - INFO - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-03-30 11:52:46 - INFO - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2026-03-30 11:52:46 - INFO - com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2026-03-30 11:52:46 - INFO - com.app.quantitymeasurement.QuantityMeasurementAppApplication - Starting QuantityMeasurementAppApplication using Java 21.0.9 with PID 32236 (C:\Users\mpat3325\OneDrive - 7-Eleven, Inc\Desktop\GITHUB\quantitymeasurement\QuantityMeasurementUsing-SpringBoot\quantitymeasurement\target\classes started by mpat3325 in C:\Users\mpat3325\OneDrive - 7-Eleven, Inc\Desktop\GITHUB\quantitymeasurement\QuantityMeasurementUsing-SpringBoot\quantitymeasurement)
+2026-03-30 11:52:46 - DEBUG - com.app.quantitymeasurement.QuantityMeasurementAppApplication - Running with Spring Boot v4.0.4, Spring v7.0.6
+2026-03-30 11:52:46 - INFO - com.app.quantitymeasurement.QuantityMeasurementAppApplication - No active profile set, falling back to 1 default profile: "default"
+2026-03-30 11:52:46 - INFO - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-03-30 11:52:46 - INFO - org.springframework.data.repository.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 19 ms. Found 1 JPA repository interface.
+2026-03-30 11:52:47 - INFO - org.springframework.boot.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-03-30 11:52:47 - INFO - org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-03-30 11:52:47 - INFO - org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-30 11:52:47 - INFO - org.springframework.boot.web.context.servlet.WebApplicationContextInitializer - Root WebApplicationContext: initialization completed in 436 ms
+2026-03-30 11:52:47 - INFO - org.hibernate.orm.jpa - HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-03-30 11:52:47 - INFO - org.springframework.orm.jpa.persistenceunit.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-03-30 11:52:47 - INFO - com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Starting...
+2026-03-30 11:52:47 - INFO - com.zaxxer.hikari.pool.HikariPool - HikariPool-2 - Added connection conn10: url=jdbc:h2:file:C:/quantitydb/quantitydb user=SA
+2026-03-30 11:52:47 - INFO - com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Start completed.
+2026-03-30 11:52:47 - WARN - org.hibernate.orm.deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-03-30 11:52:47 - INFO - org.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [jdbc:h2:file:C:/quantitydb/quantitydb]
+	Database driver: H2 JDBC Driver
+	Database dialect: H2Dialect
+	Database version: 2.4.240
+	Default catalog/schema: QUANTITYDB/PUBLIC
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: 100
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-03-30 11:52:47 - INFO - org.hibernate.orm.core - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-03-30 11:52:47 - INFO - org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-03-30 11:52:47 - WARN - org.springframework.boot.jpa.autoconfigure.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-03-30 11:52:47 - INFO - org.springframework.boot.h2console.autoconfigure.H2ConsoleAutoConfiguration - H2 console available at '/h2-console'. Database available at 'jdbc:h2:file:C:/quantitydb/quantitydb'
+2026-03-30 11:52:47 - INFO - org.springframework.boot.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-03-30 11:52:47 - INFO - com.app.quantitymeasurement.QuantityMeasurementAppApplication - Started QuantityMeasurementAppApplication in 0.856 seconds (process running for 261.642)
+2026-03-30 11:52:47 - WARN - org.springdoc.core.events.SpringDocAppInitializer - SpringDoc /v3/api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-03-30 11:52:47 - WARN - org.springdoc.core.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-03-30 11:52:47 - INFO - org.springframework.boot.devtools.autoconfigure.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
