@@ -34,7 +34,7 @@ public class QuantityController {
         return "jenkins freestyle working";
     }
     @GetMapping("/jenkinspipeline")
-    public String success(){
+    public String test(){
         return "jenkins pipeline working";
     }
 }
