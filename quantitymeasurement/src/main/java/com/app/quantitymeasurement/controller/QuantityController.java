@@ -30,11 +30,11 @@ public class QuantityController {
         return service.getAll();
     }
     @GetMapping("/jenkinsfreestyle")
-    public String success(){
-        return "jenkins freestyle working";
+    public String jenkinsFreestyle(){
+        return "jenkins freestyle deployment successful";
     }
     @GetMapping("/jenkinspipeline")
-    public String test(){
-        return "jenkins pipeline working";
+    public String jenkinsPipeline() {
+        return "Jenkins pipeline deployment successful";
     }
 }
