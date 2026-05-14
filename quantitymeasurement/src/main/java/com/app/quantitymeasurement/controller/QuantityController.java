@@ -29,8 +29,12 @@ public class QuantityController {
     public List<QuantityMeasurementEntity> getAll() {
         return service.getAll();
     }
-    @GetMapping("/success")
+    @GetMapping("/jenkinsfreestyle")
     public String success(){
-        return "success";
+        return "jenkins freestyle working";
+    }
+    @GetMapping("/jenkinspipeline")
+    public String success(){
+        return "jenkins pipeline working";
     }
 }
