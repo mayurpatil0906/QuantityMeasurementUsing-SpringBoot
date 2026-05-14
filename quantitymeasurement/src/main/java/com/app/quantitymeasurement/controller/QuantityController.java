@@ -29,4 +29,8 @@ public class QuantityController {
     public List<QuantityMeasurementEntity> getAll() {
         return service.getAll();
     }
+    @GetMapping("/success")
+    public String success(){
+        return "success";
+    }
 }
